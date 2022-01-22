@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Campsiteinfo extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         selectedCampsite: null
-    //     };
-    // }
 
     renderCampsite(campsite) {
         return (
@@ -27,8 +21,7 @@ class Campsiteinfo extends Component {
             return (
                 <div className ="col-md-5 m-1">
                     <h4>Comments</h4>
-                    {
-                        comments.map(comment => {
+                    { comments.map(comment => {
                             return (
                             <p key={comment.id}>{comment.text}<br/>
                             --{comment.author}, {new Intl.DateTimeFormat('en-US', {year:'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
