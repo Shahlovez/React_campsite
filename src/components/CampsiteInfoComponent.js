@@ -1,11 +1,8 @@
 import React from 'react';
 import { Card, CardImg, CardText,CardBody, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label} from "reactstrap";
 import { Link } from 'react-router-dom';
-// import ModalHeader from 'reactstrap/lib/ModalHeader';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
-
-    
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 
@@ -36,7 +33,7 @@ class CommentForm extends React.Component{
               isModalOpen: !this.state.isModalOpen
           });
       };
-      handleSubmit = (values) => {
+      alertSubmit = (values) => {
         this.toggleModal();
         console.log(values);
       };
@@ -50,7 +47,7 @@ class CommentForm extends React.Component{
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                 <ModalBody>
-                    <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                    <LocalForm onSubmit={values => this.alertSubmit(values)}>
                     
                     <div className='form-group'>
                         <Label htmlFor='rating'>Rating</Label>
