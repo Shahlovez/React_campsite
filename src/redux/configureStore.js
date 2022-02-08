@@ -1,5 +1,5 @@
 import { createStore, combineReducers} from 'redux';
-import { Reducer, initialState } from './reducer';
+// import { Reducer, initialState } from './reducer';
 import { Campsites } from './campsites';
 import { Comments } from './comments';
 import { Partners } from './partners';
