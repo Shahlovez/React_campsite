@@ -7,7 +7,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, ReactReduxContext} from 'react-redux';
 import { addComment, fetchCampsites } from '../redux/ActionCreators';
 import { actions } from "react-redux-form";
 
@@ -21,8 +21,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
-    fetchCampsites: () => (fetchCampsites())
-
+    fetchCampsites: () => (fetchCampsites()),
+    resetFeedbackForm: () => (actions.reset('feedbackForm'))
 };
 <CampsiteInfo 
         campsite={this.props.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]} 
@@ -55,9 +55,10 @@ class Main extends Component {
                 isLoading={this.props.campsites.isLoading}
                 errMess={this.props.campsites.errMess}
                 comments={this.props.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
-                addComment={this.props.addComment}
+                commentsErrMess={this.props.comments.errMess}
+          postComment={this.props.postComment}
+        />
             
-                />
           );
       };
 
@@ -68,7 +69,8 @@ class Main extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
                     <Route path='/directory/:campsiteId'component={CampsiteWithId}/>
-                    <Route exact path='/contactus' component={Contact} />
+                    <Route exact path="/contactus"render={() => ( <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                )}/>
                     <Route exact path ='/aboutus' render={()=><About partners={this.props.partners}/>}/>
                     <Redirect to='/home' />
         
