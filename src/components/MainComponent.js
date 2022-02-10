@@ -7,7 +7,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { connect, ReactReduxContext } from 'react-redux';
+import { connect} from 'react-redux';
 import { postComment, fetchCampsites, fetchComments, fetchPromotions  } from '../redux/ActionCreators';
 import { actions } from "react-redux-form";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -54,9 +54,9 @@ class Main extends Component {
             return (
                 <CampsiteInfo 
                  campsite={
-                    this.props.campsites.campsites.filter(
-                    (campsite) => campsite.id === +match.params.campsiteId
-                    )[0]
+                        this.props.campsites.campsites.filter(
+                        (campsite) => campsite.id === +match.params.campsiteId
+                        )[0]
                     }
                     isLoading={this.props.campsites.isLoading}
                     errMess={this.props.campsites.errMess}
