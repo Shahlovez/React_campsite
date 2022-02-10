@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { baseUrl} from '../shared/campsites';
+import { baseUrl} from '../shared/baseUrl';
 
 
 export const addComment = (campsiteId, rating, author, text) => ({
