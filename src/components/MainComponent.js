@@ -108,9 +108,11 @@ class Main extends Component {
                     exact
                     path="/contactus"
                     render={() => (
-                      <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
-                    )}
+                        <Contact resetFeedbackForm={this.props.resetFeedbackForm} 
+                    postFeedback={this.props.postFeedback}
                   />
+                )}
+              />
                   <Route
                     exact
                     path="/aboutus"
